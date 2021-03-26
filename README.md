@@ -145,7 +145,7 @@ cat  | Open a file, Add multiple files, Create new file
 tac  | See few ending lines from a file
 head  | See first 10 lines from a file
 tail  | See few ending lines from a file, by default 10 lines
-touch  | Create a new file. Usage: `$ touch \<filename\>`
+touch  | Create a new file. Usage: `$ touch <filename>`
 mv  | Change filename
 rm  | Remove file
 
@@ -153,8 +153,8 @@ rm  | Remove file
 Command  | Function
 ------------- | -------------
 pwd  | Present Working Directory. Shows the whole directory path where terminal is at right now
-mkdir  | Create new directory. Usage: `$ mkdir \<directoryname\>`
-rmdir  | Remove a directory. Usage: `$ rmdir \<directoryname\>`
+mkdir  | Create new directory. Usage: `$ mkdir <directoryname>`
+rmdir  | Remove a directory. Usage: `$ rmdir <directoryname>`
 cd  | Open home directory
 cd ~  | Open home directory
 cd ..  | Change parent directory
