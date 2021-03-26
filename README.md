@@ -248,3 +248,14 @@ Use the following command to see a list of Ubuntu Make supported tools and platf
 To download Android Studio, use the following command:
 
     $ umake android
+
+### Install Git:
+Install using:
+
+    $ sudo apt install git-all
+
+Verify the installation with:
+
+    $ git --version
+
+For more options, click [***here***](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
