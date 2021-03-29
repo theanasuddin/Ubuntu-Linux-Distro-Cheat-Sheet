@@ -21,6 +21,23 @@ Click ***[here](https://ubuntu.com/download/desktop)*** to download latest Ubunt
 
 Click ***[here](https://rufus.ie/)*** to download Rufus.
 
+Alternatively, you can use [***Etcher***](https://www.balena.io/etcher/) if you are on a Linux machine. Etcher has support for most Linux distros. Here's a Debian and Ubuntu based package repository (GNU/Linux x86/x64). Install using:
+
+1. Add Etcher debian repository:
+    ```
+    $ echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
+    ```
+2. Trust bintray.com's GPG key:
+    ```
+    $ sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
+    ```
+3. Update and install:
+    ```sh
+    $ sudo apt-get update
+    $ sudo apt-get install balena-etcher-electron
+    ```
+Check GitHub [***repository***](https://github.com/balena-io/etcher) of balenaEtcher for more details. Also, refer to Etcher's [***website***](https://www.balena.io/etcher/) for the latest pre-made installers for all supported operating systems.
+
 ## Useful Commands 
 ### Update Ubuntu:
 Sync the package index files from their sources:
