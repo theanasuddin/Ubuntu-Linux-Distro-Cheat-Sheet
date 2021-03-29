@@ -24,6 +24,7 @@ Click ***[here](https://rufus.ie/)*** to download Rufus.
 Alternatively, you can use [***Etcher***](https://www.balena.io/etcher/) if you are on a Linux machine. Etcher has support for most Linux distros. Here's a Debian and Ubuntu based package repository (GNU/Linux x86/x64). Install using:
 
 1. Add Etcher debian repository:
+
    ```sh
     $ echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d/balena-etcher.list
     ```
