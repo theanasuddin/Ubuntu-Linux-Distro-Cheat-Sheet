@@ -279,3 +279,65 @@ Verify the installation with:
     $ git --version
 
 For more options, click [***here***](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+## Raspberry Pi
+### Powering Raspberry Pi With Ubuntu Desktop:
+Running Ubuntu Desktop on the Raspberry Pi is easy. Just pick the [***OS image***](https://ubuntu.com/download/raspberry-pi), flash it onto a microSD card, load it onto the Pi and away you go. You can also install Ubuntu Server on the Pi if you want to. Ubuntu Server works on the Raspberry Pi 2, 3 and 4 but Ubuntu Desktop only works on the Raspberry Pi 4 with 4GB or 8GB of RAM and on Raspberry Pi 400.
+
+> :pushpin: Follow this [***desktop***](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4) or [***server***](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi) tutorial from Canonical for an in-depth installation guide.
+
+### Building NAS Server With Raspberry Pi & OpenMediaVault:
+> :pushpin: A Network-attached storage (NAS) device is a storage device connected to a network that allows storage and retrieval of data from a central location for authorised network users and varied clients. A NAS can be very helpful for small businesses or for home use. It is like 
+having a private cloud.
+
+We are going to use Raspberry Pi OS Lite for this NAS as Desktop versions of Raspberry PI OS are not supported by OMV5. OMV5 will install on Raspberry PI models 2B and higher. But, in practical terms, the performance of the model 2B is marginal. Raspberry Pi 4 models are recommended.
+
+Follow ***[this](https://www.raspberrypi.org/software/operating-systems/)*** to download Raspberry Pi OS Lite image. Flush a microSD card (minimum 16GB, A1 rated, class 10 card recommended) with this image using Etcher or [***Raspberry Pi Imager***](https://www.raspberrypi.org/software/). We also need a HDD/SSD for more storage capacity.
+
+Enabling Raspberry Pi OS's SSH Server for Remote Access: We can enable SSH in various ways. We can do it with the configuration tool of Pi. To access configuration tool:
+
+    $ sudo raspi-config
+
+For a complete headless setup, Raspberry PI OS can be configured to enable it's SSH server on first boot, so the server can be accessed remotely. To do this, unplug the SD card for a few moments and plug it back into the PC and create a file named **ssh** with no extension inside the root directory of the card.
+
+We need the IP of the Pi to SSH into the Pi. The IP can be seen from the CLI while Pi starts or we can use an IP scanner like [***Advanced IP Scanner***](https://www.advanced-ip-scanner.com/) or [***Angry IP Scanner***](https://angryip.org/) for this purpose. We can also get the IP by logging into the router. For SSH access, use:
+
+    $ ssh USERNAME@IP
+
+The default user for Pi is **pi** and the password is **raspberry**. So, the command will look something like the following along with the IP:
+
+    $ ssh pi@192.168.1.102
+
+> :pushpin: Windows users can use [*PuTTY*](https://www.putty.org/) SSH client.
+
+To change the default Pi password, use:
+
+    $ passwd
+
+A static IP is required for reliability when creating a NAS. We can assign a static IP to the Pi through the router by logging into it or we can do it by editing the DHCP config file in Pi. Use:
+
+    $ sudo nano /etc/dhcpcd.conf
+
+Example static IP configuration (add this at the end of the dhcpcd.conf file):
+
+*interface eth0 <br/>
+static ip_address=192.168.1.105/24 <br/>
+static routers=192.168.1.1 <br/>
+static domain_name_servers=192.168.1.1 8.8.8.8*
+
+Change the interface name and IP addresses according to your network. After the static IP setup, we can always SSH into the Pi using this non changing IP. Also, this way, we can always reach the NAS server remotely with the same IP from other devices like PC, Mac, Smartphones etc.
+
+Finally, to install [***OMV***](https://www.openmediavault.org/), use the following commands, executed one at at time:
+
+    $ sudo apt-get update
+    $ sudo apt-get upgrade -y
+    $ sudo reboot
+    $ wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+
+Depending on several factors, running this last command script may take up to 30 minutes. When the script is complete, the Pi will automatically reboot.
+
+First Time GUI Login into OMV: OMV can be logged into using the same IP address that was used for the SSH remote access, entered in a web browser address bar. The web GUI user is **admin** and the default password is **openmediavault**. Using this GUI, we can manage our whole NAS server.
+
+> :pushpin: A complete installation guide of OMV for Raspberry Pi is available in [PDF](https://github.com/OpenMediaVault-Plugin-Developers/docs/raw/master/Adden-B-Installing_OMV5_on_an%20R-PI.pdf).
+
+> :pushpin: For more details on how to use OMV and to run OpenMediaVault on other Linux distros, check out this [***documentation***](https://openmediavault.readthedocs.io/en/5.x/).
