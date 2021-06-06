@@ -12,7 +12,7 @@
  - Either a DVD drive or a USB port for the installer media
 
 ### Download :arrow_down: Ubuntu:
-> :pushpin: It's better to ownload the latest LTS version of Ubuntu, for desktop PCs and laptops. LTS stands for long-term support — which means five years of free security and maintenance updates, guaranteed.
+> :pushpin: It's better to download the latest LTS version of Ubuntu, for desktop PCs and laptops. LTS stands for long-term support — which means five years of free security and maintenance updates, guaranteed.
 
 Click ***[here](https://ubuntu.com/download/desktop)*** to download latest Ubuntu Desktop 🖥 ISO image file from Ubuntu website.
 
